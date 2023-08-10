@@ -4,11 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -99,12 +101,39 @@ class MainActivity : ComponentActivity() {
                         Spacer(modifier = Modifier.height(20.dp))
 
                         //詳細表示ボタン
-                        Button(modifier = Modifier.fillMaxWidth(), onClick = { /*TODO*/ }) {
+                        Button(modifier = Modifier.fillMaxWidth(),
+                            colors = ButtonDefaults.buttonColors(backgroundColor = Color(color = 0xFFF85F6A)),
+                            onClick = { /*TODO*/ }) {
                             Text(text = "詳細を表示", color = Color.White)
+                        }
+                        Spacer(modifier = Modifier.height(20.dp))
+
+                        //趣味と居住地域
+
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clip(RoundedCornerShape(10.dp))
+                                .background(Color.LightGray.copy(alpha = 0.3f))
+                                .padding(horizontal = 10.dp, vertical = 20.dp)
+                        ) {
                         }
                     }
                 }
             }
         }
     }
+}
+
+@Composable
+fun Label() {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Icon(
+            imageVector = Icons.Default.Email,
+            contentDescription = "Email"
+        )
+        Spacer(modifier = Modifier.width(10.dp))
+        Text(text = "email", fontSize = 14.sp, fontWeight = FontWeight.Bold)
+    }
+
 }
